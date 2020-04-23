@@ -14,6 +14,9 @@ let log = console.log.bind(console),
   counter=1,
   chunks,
   media;
+
+let volumn = document.getElementById("vid").volume;
+
 let urls = [];
 let ulurls = id('all');
 $(document).ready(function()
@@ -161,8 +164,7 @@ function uploadToAWS(s3Audio,blob, fileName)
       return alert('There was an error uploading your photo: ', err.message);
     }
 	
-	var player = document.getElementById('vid');
-
+	document.getElementById("vid").volume = volumn;
     alert('Successfully uploaded photo.');
 	
   });
