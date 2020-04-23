@@ -28,7 +28,7 @@ $(document).ready(function()
 		$("#label").text("Mic not available");
 
 	volumn = document.getElementById("vid").volume;
-	alert("22");
+	alert("gg");
 });
 
 gUMbtn.onclick = e => {
