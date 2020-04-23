@@ -41,7 +41,9 @@ $(document).ready(function()
 });
 
 gUMbtn.onclick = e => {
-  let mv = id('mediaVideo'),
+	try
+	{
+		let mv = id('mediaVideo'),
       mediaOptions = {
         audio: {
           tag: 'audio',
@@ -63,6 +65,11 @@ gUMbtn.onclick = e => {
     };
     log('got media successfully');
   }).catch(function(err) { alert(err); });
+	}
+	catch(err)
+	{
+		alert(err);
+	}
 }
 
 start.onclick = e => {
