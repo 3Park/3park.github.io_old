@@ -2,7 +2,11 @@
 var albumBucketName = 'god-of-interview-streaming';
 var bucketRegion = 'ap-northeast-2';
 
-AWS.config.update({
+
+
+function GetTestURL()
+{
+	AWS.config.update({
   region: bucketRegion,
   credentials: {
    accessKeyId: 'AKIAZYJCQLWOEQTFH3XD', 
@@ -10,13 +14,11 @@ AWS.config.update({
   }
 });
 
-const s3 = new AWS.S3({
+ s3 = new AWS.S3({
   apiVersion: '2006-03-01',
   params: {Bucket: albumBucketName, signatureVersion: 'v4' }
 });
 
-function GetTestURL()
-{
 	var params = {Bucket: albumBucketName , Key: "test/Lecture_cloth_6.mp4", Expires: 60};
 	var url = s3.getSignedUrl('getObject', params);
 	console.log('The URL is', url);
