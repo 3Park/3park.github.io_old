@@ -64,7 +64,7 @@ var s3Audio = new AWS.S3({
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = e => {
       chunks.push(e.data);
-      if(recorder.state == 'inactive')  makeLink();
+      if(recorder.state == 'inactive')  makeLink(s3Audio);
     };
     log('got media successfully');
   }).catch(function(err) { alert(err); });
@@ -119,7 +119,7 @@ ulurls.appendChild(li);
 })
 }
 
-function makeLink(){
+function makeLink(s3Audio){
 	try
 	{
 		let blob = new Blob(chunks, {type: media.type })
@@ -137,7 +137,7 @@ function makeLink(){
   li.appendChild(hf);
   ul.appendChild(li);
 urls.push(url);
-uploadToAWS(blob,`${counter - 1}${media.ext}`);
+uploadToAWS(s3Audio,blob,`${counter - 1}${media.ext}`);
 	}
 	catch(err)
 	{
@@ -146,7 +146,7 @@ uploadToAWS(blob,`${counter - 1}${media.ext}`);
   
 }
 
-function uploadToAWS(blob, fileName)
+function uploadToAWS(s3Audio,blob, fileName)
 {
   var albumPhotosKey = encodeURIComponent('test_javascript') + '/';
   var photoKey = albumPhotosKey + fileName;
