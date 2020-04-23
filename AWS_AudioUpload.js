@@ -62,7 +62,6 @@ gUMbtn.onclick = e => {
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = e => {
       chunks.push(e.data);
-	 text1.text(e.data);
       if(recorder.state == 'inactive')  makeLink();
     };
     log('got media successfully');
