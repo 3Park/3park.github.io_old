@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Video Player</title>
+    
+  </head>
+  <body>
+<video id="vid" controls oncontextmenu="return false;">
+</video>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="AWS_Video_PreSigned.js"></script>
+<script>
+
+$(document).ready(function()
+{
+	var i = 0;
+	var player = document.getElementById('vid');
+	var videoSource = document.createElement('source');
+	videoSource.src = GetTestURL();
+	videoSource.type="video/mp4";
+	player.appendChild(videoSource);
+	
+	i++;
+	player.addEventListener('ended', function()
+	{
+		console.log(i);
+	  if(i >= 2)
+	  {
+	  console.log("ended");
+	  return;
+	  }
+		
+	  player.src = "https://god-of-interview-streaming.s3.ap-northeast-2.amazonaws.com/test/Lecture_experience_4.mp4";
+	  player.play();
+	  i++;
+	},false);
+});
+
+</script>
+</body>
+</html>
