@@ -164,6 +164,7 @@ function uploadToAWS(s3Audio,blob, fileName)
       return alert('There was an error uploading your photo: ', err.message);
     }
 	
+	alert("1");
 	document.getElementById("vid").volume = volumn;
 	alert(document.getElementById("vid").volume);
     alert('Successfully uploaded photo.');
