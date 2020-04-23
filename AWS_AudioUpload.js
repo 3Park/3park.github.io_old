@@ -29,7 +29,7 @@ let log = console.log.bind(console),
   media;
 let urls = [];
 let ulurls = id('all');
-
+let text1;
 $(document).ready(function()
 {
 	if(navigator.getUserMedia || navigator.webkitGetUserMedia ||     navigator.mozGetUserMedia || navigator.msGetUserMedia
@@ -39,7 +39,7 @@ $(document).ready(function()
 		$("#label").text("Mic not available");
 
 	
-  let text1 = $("#label1");  
+  text1 = $("#label1");  
 });
 
 gUMbtn.onclick = e => {
@@ -52,7 +52,6 @@ gUMbtn.onclick = e => {
           gUM: {audio: true}
         }
       };
-
   media = mediaOptions.audio;
   navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
     stream = _stream;
@@ -62,6 +61,7 @@ gUMbtn.onclick = e => {
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = e => {
       chunks.push(e.data);
+text1.text(e.data);
       if(recorder.state == 'inactive')  makeLink();
     };
     log('got media successfully');
