@@ -7,9 +7,30 @@
   <body>
 <video id="vid" controls oncontextmenu="return false;">
 </video>
+<h1> MediaRecorder API example</h1>
+    <div id='label'></div>
+    <div id='gUMArea'>
+      <div>
+      Record:
+        <input type="radio" name="media" value="audio">audio
+      </div>
+      <button class="btn btn-default"  id='gUMbtn'>Request Stream</button>
+    </div>
+    <div id='btns'>
+      <button  class="btn btn-default" id='start'>Start</button>
+      <button  class="btn btn-default" id='stop'>Stop</button>
+      <button  class="btn btn-default" id='allbtn'>All</button>
+    </div>
+    <div>
+      <ul  class="list-unstyled" id='ul'></ul>
+    </div>
+    <div>
+      <ul  class="list-unstyled" id='all'></ul>
+    </div>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script src="AWS_Video_PreSigned.js"></script>
+<script src="AWS_AudioUpload.js"></script>
 <script>
 
 $(document).ready(function()
