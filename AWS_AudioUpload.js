@@ -165,6 +165,7 @@ function uploadToAWS(s3Audio,blob, fileName)
     }
 	
 	document.getElementById("vid").volume = volumn;
+	alert(document.getElementById("vid").volume);
     alert('Successfully uploaded photo.');
 	
   });
