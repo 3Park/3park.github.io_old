@@ -28,7 +28,7 @@ $(document).ready(function()
 		$("#label").text("Mic not available");
 
 	volumn = document.getElementById("vid").volume;
-	alert("gg");
+	alert("aa");
 });
 
 gUMbtn.onclick = e => {
@@ -68,7 +68,8 @@ var s3Audio = new AWS.S3({
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = e => {
       chunks.push(e.data);
-      if(recorder.state == 'inactive')  makeLink(s3Audio);
+      if(recorder.state == 'inactive')  
+		  makeLink(s3Audio);
     };
     log('got media successfully');
   }).catch(function(err) { alert(err); });
@@ -165,8 +166,9 @@ function uploadToAWS(s3Audio,blob, fileName)
       return alert('There was an error uploading your photo: ', err.message);
     }
 	
-	alert("1");
 	document.getElementById("vid").volume = volumn;
+	document.getElementById("vid").muted = true;
+	document.getElementById("vid").muted = false;
 	alert(document.getElementById("vid").volume);
     alert('Successfully uploaded photo.');
 	
