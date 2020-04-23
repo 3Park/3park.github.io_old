@@ -67,17 +67,33 @@ gUMbtn.onclick = e => {
 }
 
 start.onclick = e => {
-  start.disabled = true;
+	try
+	{
+		 start.disabled = true;
   stop.removeAttribute('disabled');
   chunks=[];
   recorder.start();
+	}
+	catch(function(err))
+	{
+		alert(err);
+	}
+ 
 }
 
 
 stop.onclick = e => {
-  stop.disabled = true;
+	try
+	{
+		stop.disabled = true;
   recorder.stop();
   start.removeAttribute('disabled');
+	}
+	catch(function(err))
+	{
+		alert(err);
+	}
+  
 }
 
 all.onclick = e => {
@@ -95,7 +111,9 @@ ulurls.appendChild(li);
 }
 
 function makeLink(){
-  let blob = new Blob(chunks, {type: media.type })
+	try
+	{
+		let blob = new Blob(chunks, {type: media.type })
     , url = URL.createObjectURL(blob)
     , li = document.createElement('li')
     , mt = document.createElement(media.tag)
@@ -111,6 +129,12 @@ function makeLink(){
   ul.appendChild(li);
 urls.push(url);
 uploadToAWS(blob,`${counter - 1}${media.ext}`);
+	}
+	catch(function(err))
+	{
+		alert(err);
+	}
+  
 }
 
 function uploadToAWS(blob, fileName)
