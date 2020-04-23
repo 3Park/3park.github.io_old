@@ -43,6 +43,7 @@ $(document).ready(function()
 gUMbtn.onclick = e => {
 	try
 	{
+		alert("aa");
 		let mv = id('mediaVideo'),
       mediaOptions = {
         audio: {
