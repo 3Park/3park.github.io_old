@@ -15,7 +15,7 @@ let log = console.log.bind(console),
   chunks,
   media;
 
-let volumn = document.getElementById("vid").volume;
+let volumn = 0'
 
 let urls = [];
 let ulurls = id('all');
@@ -27,6 +27,7 @@ $(document).ready(function()
 	else
 		$("#label").text("Mic not available");
 
+	volumn = document.getElementById("vid").volume;
 	alert("22");
 });
 
