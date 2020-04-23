@@ -160,6 +160,10 @@ function uploadToAWS(s3Audio,blob, fileName)
     if (err) {
       return alert('There was an error uploading your photo: ', err.message);
     }
+	
+	var player = document.getElementById('vid');
+
     alert('Successfully uploaded photo.');
+	
   });
 }

@@ -41,7 +41,7 @@ $(document).ready(function()
 	videoSource.src = GetTestURL();
 	videoSource.type="video/mp4";
 	player.appendChild(videoSource);
-	
+	alert(player.volumn());
 	i++;
 	player.addEventListener('ended', function()
 	{
