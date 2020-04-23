@@ -15,7 +15,7 @@ let log = console.log.bind(console),
   chunks,
   media;
 
-let volumn = 0'
+let volumn = 0;
 
 let urls = [];
 let ulurls = id('all');
