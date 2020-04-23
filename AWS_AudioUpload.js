@@ -9,7 +9,7 @@ AWS.config.update({
   })
 });
 
-var s3 = new AWS.S3({
+var s3Audio = new AWS.S3({
   apiVersion: '2006-03-01',
   params: {Bucket: albumBucketName}
 });
@@ -149,7 +149,7 @@ function uploadToAWS(blob, fileName)
   var photoKey = albumPhotosKey + fileName;
   var file = new File([blob],fileName);
 
- s3.upload({
+ s3Audio.upload({
     Key: photoKey,
     Body: file,
     ACL: 'public-read'
