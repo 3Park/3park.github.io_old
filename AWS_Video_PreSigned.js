@@ -1,4 +1,4 @@
-function GetTestURL()
+function GetTestURL(path)
 {
 	var albumBucketName = 'god-of-interview-streaming';
 var bucketRegion = 'ap-northeast-2';
@@ -16,7 +16,7 @@ var bucketRegion = 'ap-northeast-2';
   params: {Bucket: albumBucketName, signatureVersion: 'v4' }
 });
 
-	var params = {Bucket: albumBucketName , Key: "test/Lecture_cloth_6.mp4", Expires: 60};
+	var params = {Bucket: albumBucketName , Key: path, Expires: 60};
 	var url = s3.getSignedUrl('getObject', params);
 	console.log('The URL is', url);
 	return url;

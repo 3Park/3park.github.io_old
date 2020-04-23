@@ -7,6 +7,7 @@
   <body>
 <video id="vid" controls oncontextmenu="return false;">
 </video>
+<button  class="btn btn-default" id='stopbtn'>stopvid</button>
 <h1> MediaRecorder API example</h1>
     <div id='label'></div>
     <div id='gUMArea'>
@@ -32,31 +33,50 @@
 <script src="AWS_Video_PreSigned.js"></script>
 <script src="AWS_AudioUpload.js"></script>
 <script>
-
+	var i = 0;
 $(document).ready(function()
 {
-	var i = 0;
+
 	var player = document.getElementById('vid');
+	
+	var stopbtn = document.getElementById('stopbtn');
+	
+	stopbtn.addEventListener("click", function()
+	{
+		PlayNext();
+	});
+	
 	var videoSource = document.createElement('source');
-	videoSource.src = GetTestURL();
+	videoSource.src = GetTestURL("test/Lecture_cloth_6.mp4");
 	videoSource.type="video/mp4";
 	player.appendChild(videoSource);
 	i++;
 	player.addEventListener('ended', function()
 	{
-		console.log(i);
+		NextVideo(player);
+	},false);
+});
+
+function NextVideo(player)
+{
+      console.log(i);
 	  if(i >= 2)
 	  {
 	  console.log("ended");
 	  return;
 	  }
 		
-	  player.src = "https://god-of-interview-streaming.s3.ap-northeast-2.amazonaws.com/test/Lecture_experience_4.mp4";
+	  player.src = GetTestURL("test/Lecture_experience_4.mp4");
 	  player.play();
 	  i++;
-	},false);
-});
+}
 
+function PlayNext()
+{
+	var player = document.getElementById('vid');
+	player.pause();
+	NextVideo(player);
+}
 </script>
 </body>
 </html>

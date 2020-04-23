@@ -15,8 +15,6 @@ let log = console.log.bind(console),
   chunks,
   media;
 
-let volumn = 0;
-
 let urls = [];
 let ulurls = id('all');
 $(document).ready(function()
@@ -26,9 +24,6 @@ $(document).ready(function()
 		$("#label").text("Mic Available");
 	else
 		$("#label").text("Mic not available");
-
-	volumn = document.getElementById("vid").volume;
-	alert("aa");
 });
 
 gUMbtn.onclick = e => {
@@ -166,11 +161,7 @@ function uploadToAWS(s3Audio,blob, fileName)
       return alert('There was an error uploading your photo: ', err.message);
     }
 	
-	document.getElementById("vid").volume = volumn;
-	document.getElementById("vid").muted = true;
-	document.getElementById("vid").muted = false;
-	alert(document.getElementById("vid").volume);
-    alert('Successfully uploaded photo.');
+	PlayNext();
 	
   });
 }
