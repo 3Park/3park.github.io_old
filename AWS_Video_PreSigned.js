@@ -1,11 +1,8 @@
-
-var albumBucketName = 'god-of-interview-streaming';
-var bucketRegion = 'ap-northeast-2';
-
-
-
 function GetTestURL()
 {
+	var albumBucketName = 'god-of-interview-streaming';
+var bucketRegion = 'ap-northeast-2';
+
 	AWS.config.update({
   region: bucketRegion,
   credentials: {

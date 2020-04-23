@@ -1,6 +1,3 @@
-var albumBucketName = 'god-of-interview-userdata';
-var bucketRegion = 'ap-northeast-2';
-var IdentityPoolId = 'ap-northeast-2:5f45d1c2-23ca-4889-ae75-cb16dbcf5deb';
 
 
 
@@ -33,6 +30,10 @@ $(document).ready(function()
 gUMbtn.onclick = e => {
 	try
 	{
+		var albumBucketName = 'god-of-interview-userdata';
+var bucketRegion = 'ap-northeast-2';
+var IdentityPoolId = 'ap-northeast-2:5f45d1c2-23ca-4889-ae75-cb16dbcf5deb';
+
 		AWS.config.update({
   region: bucketRegion,
   credentials: new AWS.CognitoIdentityCredentials({
