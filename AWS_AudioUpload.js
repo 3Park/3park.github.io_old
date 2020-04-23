@@ -38,6 +38,8 @@ $(document).ready(function()
 	else
 		$("#label").text("Mic not available");
 
+	
+  let text1 = $("#label1");  
 });
 
 gUMbtn.onclick = e => {
@@ -60,6 +62,7 @@ gUMbtn.onclick = e => {
     recorder = new MediaRecorder(stream);
     recorder.ondataavailable = e => {
       chunks.push(e.data);
+	 text1.text(e.data);
       if(recorder.state == 'inactive')  makeLink();
     };
     log('got media successfully');
@@ -70,11 +73,11 @@ start.onclick = e => {
 	try
 	{
 		 start.disabled = true;
-  stop.removeAttribute('disabled');
-  chunks=[];
-  recorder.start();
+		  stop.removeAttribute('disabled');
+		  chunks=[];
+		  recorder.start();
 	}
-	catch(function(err))
+	catch(err)
 	{
 		alert(err);
 	}
@@ -86,10 +89,10 @@ stop.onclick = e => {
 	try
 	{
 		stop.disabled = true;
-  recorder.stop();
-  start.removeAttribute('disabled');
+		  recorder.stop();
+		  start.removeAttribute('disabled');
 	}
-	catch(function(err))
+	catch(err)
 	{
 		alert(err);
 	}
@@ -130,7 +133,7 @@ function makeLink(){
 urls.push(url);
 uploadToAWS(blob,`${counter - 1}${media.ext}`);
 	}
-	catch(function(err))
+	catch(err)
 	{
 		alert(err);
 	}
