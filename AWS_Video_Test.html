@@ -5,8 +5,9 @@
     
   </head>
   <body>
-<video id="vid" controls oncontextmenu="return false;">
-</video>
+  <div id='viddiv'>
+  </div>
+
 <button  class="btn btn-default" id='stopbtn'>stopvid</button>
 <h1> MediaRecorder API example</h1>
     <div id='label'></div>
@@ -37,7 +38,7 @@
 $(document).ready(function()
 {
 
-	var player = document.getElementById('vid');
+	var player = document.getElementById('viddiv');
 	
 	var stopbtn = document.getElementById('stopbtn');
 	
@@ -46,12 +47,17 @@ $(document).ready(function()
 		PlayNext();
 	});
 	
+	var vid = document.createElement('video');
+	vid.setAttribute("id","tempvid");
+	vid.setAttribute("controls","");
+	vid.setAttribute("oncontextmenu","return false;");
 	var videoSource = document.createElement('source');
 	videoSource.src = GetTestURL("test/Lecture_cloth_6.mp4");
 	videoSource.type="video/mp4";
-	player.appendChild(videoSource);
+	vid.appendChild(videoSource);
+	player.appendChild(vid);
 	i++;
-	player.addEventListener('ended', function()
+	vid.addEventListener('ended', function()
 	{
 		NextVideo(player);
 	},false);
@@ -66,15 +72,26 @@ function NextVideo(player)
 	  return;
 	  }
 		
-	  player.src = GetTestURL("test/Lecture_experience_4.mp4");
-	  player.play();
+		while ( player.hasChildNodes() ) { player.removeChild( player.firstChild ); }
+
+	var vid = document.createElement('video');
+	vid.setAttribute("id","tempvid");
+		vid.setAttribute("controls","");
+	vid.setAttribute("oncontextmenu","return false;");
+	var videoSource = document.createElement('source');
+	videoSource.src = GetTestURL("test/Lecture_experience_4.mp4");
+	videoSource.type="video/mp4";
+	vid.appendChild(videoSource);
+	player.appendChild(vid);		
+	  vid.play();
 	  i++;
 }
 
 function PlayNext()
 {
-	var player = document.getElementById('vid');
-	player.pause();
+	var player = document.getElementById('viddiv');
+	var player1 = document.getElementById('tempvid');
+	player1.pause();
 	NextVideo(player);
 }
 </script>

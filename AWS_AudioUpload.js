@@ -25,7 +25,7 @@ $(document).ready(function()
 	else
 		$("#label").text("Mic not available");
 	
-	alert("kk");
+	alert("hh");
 });
 
 gUMbtn.onclick = e => {
